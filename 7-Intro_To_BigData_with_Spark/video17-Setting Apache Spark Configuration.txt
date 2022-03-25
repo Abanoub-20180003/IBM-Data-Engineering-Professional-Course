@@ -1,0 +1,62 @@
+Welcome to Setting Apache Spark Configuration! After watching this video, you will be able to: Describe the configuration types
+of an Apache Spark Application, explain the purpose and common
+options for each configuration type, describe when to use static
+or dynamic configuration. You can configure a Spark Application
+using three different methods: properties, environment variables,
+or logging configuration. You can set Spark properties to adjust
+and control most application behaviors, including setting properties with the
+driver and sharing them with the cluster. Environment variables are loaded on each
+machine, so they can be adjusted on a per-machine basis if hardware or installed
+software differs between the cluster nodes. Spark logging is controlled by the log4j defaults
+file, which dictates what level of messages, such as info or errors, are logged to file or
+output to the driver during application execution. Spark configuration files are located under
+the “conf” directory in the installation. By default, there are no preexisting
+files after installation, however Spark provides a template for each
+configuration type with the filenames shown here. You can create the appropriate file
+by removing the ‘.template’ extension. Inside the template files, are sample
+configurations for common settings. You can enable them by uncommenting. You can configure Spark properties
+in a few different ways. In the driver program, you can set
+the configuration programmatically when creating the SparkSession or
+by using a separate SparkConf object that is then passed into the session constructor. Properties can be set in a configuration
+file found at ‘conf/spark-defaults.conf’ Properties can also be set when launching the
+application with spark-submit, either by using provided options such as ‘--master’ or using
+the “--conf” option with a key, value pair. Because Spark properties can
+be set in different ways, let’s look at how they are merged to build
+the final configuration for the application. The configuration set programmatically
+takes the highest precedence. This means that if a configuration has already been set elsewhere or programmed into
+the application it will be overwritten. Next is the configuration provided
+with the spark-submit script. Last is any configuration set
+in the spark-defaults.conf file. Static configuration refers to settings that are written programmatically
+into the application itself. These settings are not usually changed because
+it requires modifying the application itself. Use static configuration for something that
+is unlikely to be changed or tweaked between application runs, such as application name or
+other properties related to the application only. For example, you would not use static
+configuration when it depends on what type of cluster or resource
+requirements are available. The example here sets the application
+name property and there is an additional configuration to set the maximum result
+size in the driver to 2 gigabytes. Spark dynamic configuration is useful to avoid hardcoding specific values
+in the application itself. This is usually done for configuration
+such as the master location, so that the application can be launched on a
+cluster by simply changing the master location. Other examples include setting
+dynamically how many cores are used or how much memory is reserved by each executor so that they can be properly tuned
+for whatever cluster the application is run on. Spark environment variables are loaded
+from the file ‘conf/spark-env.sh’. These are loaded from each machine in the
+cluster when a Spark process is started. Since these can be loaded
+differently for each machine, it can help configure specifics
+on a per-machine basis. A common usage is to ensure each
+machine in the cluster uses the same Python executable by setting the
+“PYSPARK_PYTHON” environment variable. Spark logging is controlled using log4j
+and the configuration is read through ‘conf/log4j-properties’.
+Here you can adjust a log level to determine which messages (such as debug,
+info or errors) are shown in the Spark logs. Log4j allows the configuration
+to set where the logs are sent to and adjust specific components of
+Spark or third-party libraries. In this video, you learned that: You can set Spark configuration
+using properties (to control application behavior), environment variables (to adjust settings on a per-machine basis) or
+logging properties (to control logging outputs). Spark property configuration
+follows a precedence order, with the highest being configuration
+set programmatically, then spark-submit configuration, and lastly configuration
+set in the spark-defaults.conf file. Static configuration should be used for
+values that don’t change from run to run or properties related to the
+application, such as application name. Dynamic configuration should be used for values
+that change or need tuning when deployed, such as master location,
+executor memory or core settings.

@@ -1,0 +1,38 @@
+Welcome to “Datasets and DataFrames in Spark.” After watching this video, you will be able
+to: Describe dataset features and benefits within
+Apache Spark, explain three ways you can create datasets
+for use in Spark, summarize the differences between datasets
+and Data-frames. Datasets are the newest Spark data abstraction. Like RDDs and DataFrames, datasets provide
+an API to access a distributed data collection. Datasets are a collection of strongly typed
+Java Virtual Machine, or JVM, objects. Strongly typed means that datasets are typesafe,
+and the dataset’s datatype is made explicit during its creation. Datasets provide the benefits of both RDDs,
+such as lambda functions, type-safety, and SQL Optimizations from SparkSQL. Speaking of benefits, here are four more features
+of datasets: Datasets are immutable. Like RDDs, they cannot
+be deleted or lost. Datasets feature an encoder that converts
+type-specified JVM objects to a tabular representation. Datasets extend the DataFrame API. Conceptually
+a dataset of a generic untyped “Row” is a JVM object seen as a column of a DataFrame. Because datasets are strongly typed, APIs
+are currently only available in Scala and Java, which are statically typed languages.
+Dynamically typed languages, such as Python and R, do not support dataset APIs. Datasets offer some unique advantages and
+benefits over using DataFrames and RDDs. Because Datasets are statically-typed, datasets
+provide compile-time type safety. Compile-time type safety means that Spark
+can detect syntax and semantic errors in production applications before deployment, saving substantial
+developer and operational costs and time. Datasets compute faster than RDDs, especially
+for aggregate queries. Datasets offer the additional query optimization
+enabled by Catalyst and Tungsten. Datasets enable improved memory usage and
+caching. But how? Spark understands the data structure of the
+datasets and optimizes the layout within memory. The dataset API also offers functions for
+convenient high-level aggregate operations, including sum, average, join, and “group-by.” Let’s now look at three ways that you can
+create a dataset within Spark. This first example, written in Scala, uses
+the toDS function to create a dataset from a sequence. This second example illustrates how to create
+a dataset from a text file. Notice the explicit schema declaration. In
+this example, we apply the primitive “String” data type to the explicit schema declaration. This third and final example creates a dataset
+using a JSON file. In this last example, we use a custom class called “Customer,”
+which contains a “name” and an “ID” field. Next, let’s compare datasets to DataFrames. Datasets offer the benefits of both its predecessors
+– DataFrames and RDDs. Datasets are strongly typed. DataFrames are
+not typesafe. Datasets can use unified Java and Scala APIs.
+DataFrames use APIs that are written in Java, Scala, Python, and R.
+The DataFrames API may or may not be unified depending on the API version. Datasets are the latest addition to Spark
+and are built on top of DataFrames. In contrast, DataFrames, introduced earlier,
+are built on RDDs. In this video, you learned that: A dataset is a distributed collection of data
+that provides the combined benefits of both RDDs and SparkSQL. Datasets consist of strongly typed JVM objects. Datasets use DataFrame typesafe capabilities
+and extend object-oriented API capabilities. Datasets work with both Scala and Java APIs.

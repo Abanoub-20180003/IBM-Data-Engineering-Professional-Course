@@ -1,0 +1,62 @@
+Welcome to "Using DataFrames with Real World
+Data." After watching this video, you will be able
+to: Identify the basic DataFrame operational steps, apply basic DataFrame operations on real-world
+data, apply Spark DataFrames to real-world data. Let's begin with basic DataFrame operations:
+Reading, Analysis, Transformation, Loading, and Writing. First, Spark reads in the data and loads the
+data into a DataFrame. Next, you can analyze the dataset, starting
+with simple tasks such as examining the columns, data types, number of rows, and optionally
+working with aggregated stats, trend analysis, and other operations. If needed, you can transform the data by filtering
+the data to locate specific values, sorting the dataset based on specific criteria, or
+by joining this dataset with another dataset. Then you can load your transformed dataset
+back to a database or a file system and write the data back to disk. This process is commonly also referred to
+as ETL – Extract, Transform, Load. ETL is an essential process in any data processing
+pipeline as the first step makes data accessible to data warehouses for machine learning models,
+downstream applications, or other services. Let's talk about another standard process.
+ELT – Extract, Load, and Transform. This process emerged as a result of big data
+processing. With ELT, all of the data resides in a data lake.
+A data lake is a vast pool of raw data, for which the purpose of the data is not pre-defined.
+When a data lake exists, each project forms individual transformation tasks as required,
+in contrast to anticipating all necessary transformation requirements usage scenarios
+as done with ETL and a data warehouse. Organizations often use a mixture between
+both ETL and ELT. Let's take a closer look at each basic
+DataFrame operation. When reading the data, you can directly load
+data into DataFrames or create a new Spark DataFrame from an existing DataFrame. The displayed code sample shows how to load
+a dataset into a Pandas DataFrame in Python and then load that same dataset into a Spark
+DataFrame object. Let's continue the example that uses the dataset
+about car models and performance. This dataset contains columns for parameters
+such as miles per gallon, number of cylinders, horsepower, and other auto-related parameters. Here you can view the first few rows of the
+dataset. Next is analyzing the data. First, examine the DataFrame column data types
+or the schema, using the print schema method. Take note of each column's data types.
+For example, the miles per gallon is a "double" type, while the first column indicates the
+car model name is a string. You can also examine a specified number of
+DataFrame using the show function. You can apply the select function to examine
+data from a specific column in detail. This example applies the select function to
+view the first five rows of the "mpg" column. After analyzing the dataset, your next step
+is to plan for any needed dataset transformations. The goal of a transformation is to retain
+only relevant data. Transformation techniques can include filtering the data, joining with
+other data sources, or performing columnar operations. Columnar operations are actions such as multiplying
+each column by a specific number, converting data from one unit to another, such as converting
+miles per gallon to kilometers per liter. Another common transformation technique is
+to group or aggregate data. Sometimes a downstream application may require
+aggregated data, such as a quarterly sales report that does not need to display every
+transaction but needs to show the aggregated total quarterly sales and revenue numbers. Many transformations are domain-specific data
+augmentation processes. The effort needed can vary depending on the
+domain and the data. For example, scientific datasets involving
+multiple, differing measurements may require more columnar operations and unit conversions,
+while financial data can require more aggregation and averaging tasks.
+Here are some simple examples of transformations on the mtcars dataset. The filter function helps locate specific
+criteria within the dataset. In this case, the task is to filter the dataset
+for cars that have a mileage, or mpg, of less than 18 miles per gallon. Here is an example of aggregating data.
+In this example, the transformation aggregates all the records with the same number of cylinders,
+as seen in the "cyl" column, counts the number of vehicles with the specified number of cylinders,
+and sorts the data to list the number of units for each cylinder category in ascending order.
+We can see that 14 cars have an 8-cylinder engine and 11 cars have a 4-cylinder engine. The ETL pipeline's last step is to export
+the data to disk or load it into another database. Like reading the dataset and extracting the
+data, you can write the data to the disk as a JSON file or save the data into another
+database such as a Postgres database. You can also use an API to export data to
+another database, such as a Postgres database. In this video, you learned that: Basic DataFrame operations are reading, analysis,
+transformation, loading, and writing. You can use a Pandas DataFrame in Python to
+load a dataset. You can apply the print schema, select function,
+or show function for data analysis. For transform tasks, keep only relevant data
+and apply functions such as filters, joins, column operations, grouping and aggregations,
+and other functions.

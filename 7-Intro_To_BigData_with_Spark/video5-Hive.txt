@@ -1,0 +1,66 @@
+Welcome to Hive. 
+After watching this video, you will be able to: 
+Articulate the reasons why Hive is used, 
+list Hive features, differentiate between Hive vs. traditional RDBMS, 
+identify components of the Hive architecture, 
+discuss Hive concepts. 
+
+#Definetion
+Hive is a data warehouse software within Hadoop that is designed to read, write, 
+and manage large and tabular-type datasets and data analysis. 
+A data warehouse stores historical data from many different sources so that you can analyze 
+and extract insights from it. These insights are used for reporting. 
+
+#advantages of hive 
+Hive is scalable and fast because it is designed
+to work on petabytes of data. It is easy to use if you are familiar with
+SQL because Hive query language, or Hive QL, is based on SQL.  
+
+#files that hive support 
+Hive supports the following file formats: 
+Sequence files consisting of binary key value pairs, 
+record columnar files that store columns of a table in a columnar database, 
+and text or flat files. 
+
+# Hive vs RDBMs
+Hive allows for data cleaning and filtering tasks according to users' requirements. 
+Let’s look at the differences between a traditional RDBMS and Hive. Traditional RDBMS is used to maintain a database
+and uses the structured query language known as SQL. Hive is used to maintain a data warehouse
+and uses the Hive query language, a language inspired by SQL. Traditional RDBMS is suited for real-time
+data analysis, like data from sensors. Hive is suited for static data analysis. Traditional RDBMS allows for as many read
+and write operations a user needs. Hive is based on the write once, read many
+methodology. Traditional RDBMS can handle up to terabytes
+of data. Hive is designed to handle as much as petabytes
+of data. Another difference is that traditional RDBMS
+enforces that the schema must verify loading data before it can proceed. Hive doesn’t enforce the schema to verify
+loading data. Lastly, traditional RDBMS may not always have
+built-in for support data partitioning. Hive supports partitioning. Partitioning means dividing the table into
+parts based on the values of a particular column such as date or city. 
+
+# Architecture of Hive 
+There are three main parts of the architecture: 
+The Hive client: Hive provides different drivers for communication depending on the type of application. For example, for Java based applications, it uses JDBC drivers, and other types of applications will use ODBC drivers. These drivers communicate with the servers. 
+
+Hive services: Client interactions are done through the Hive
+services. Any query operations are done here. The command line interface acts as an interface
+for the Hive service. The driver takes in query statements, monitors the progress and life cycle of each session, and stores metadata generated from the query statements. 
+
+The meta store stores the metadata, the data and information about each table, such as the location and schema. The meta store, file system, and job client
+in turn communicate with Hive storage and computing to perform the following: Metadata information of tables are stored
+in some sort of database and query results and data loaded in the tables are stored in
+Hadoop cluster or HDFS. 
+
+#Detalies of Hive Architecture
+Let’s look at the concepts in detail. Components in the Hive clients include: The JDBC client, which allows Java-based applications
+to connect to Hive, and the ODBC client, which allows applications
+based on the ODBC protocol to connect to Hive. The Hive services section of the architecture
+is in charge of performing queries. The Hive server is used to run queries
+and allows multiple clients to submit requests. It is built to support the JDBC and ODBC clients. The driver receives query statements submitted
+through the command line and sends the query to the compiler after initiating a session. The optimizer performs transformations on
+the execution plan and splits the tasks to help speed up and improve efficiency. The executor executes tasks after the optimizer
+has split the tasks. The meta store is storage for the metadata,
+which is information about the table. The meta store is in charge of keeping this
+information in a central place. In this video, you learned that: Hive is a data warehouse software for reading,
+writing, and managing datasets. Although Hive works very similarly to traditional
+RDBMS, they are slightly different. The three main parts of the Hive architecture
+are Hive Client, Hive Services, and Hive Storage and Computing

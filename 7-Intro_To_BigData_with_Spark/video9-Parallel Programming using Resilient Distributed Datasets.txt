@@ -1,0 +1,48 @@
+Welcome to parallel programming using resilient distributed datasets. After watching this video, you'll
+be able to define resilient, 
+distributed datasets referred to as RDDs; 
+define parallel programming;
+explain resilience in Apache Spark; 
+relate RDD and parallel programming with Apache Spark. 
+
+
+# RDD
+A resilient distributed data set, also known as an RDD, is Spark's primary data abstraction. A resilient distributed data set, is a collection of fault tolerant
+elements partitioned across the cluster's nodes capable of receiving parallel operations. Additionally, 
+resilient distributed databases are immutable, meaning that these databases cannot be changed once created. 
+
+Every spark application consists of a driver program that runs the user's main functions and runs multiple parallel operations on a cluster. 
+
+RDD's support text, sequence files, Avro, Parquet and Hadoop input format file types. RDD's also support local, Cassandra, H Base, HDFS, Amazon S3, and other
+file formats in addition to an abundance of relational and no SQL databases. 
+
+
+#create RDD:
+First, you can create an RDD using an external or local file from a Hadoop supported file system such as HDFS, Cassandra, H Base or Amazon S3. 
+A second method is to apply the parallelize function to an existing collection in the driver program. 
+ =>One important parameter for parallel collections is the number of partitions specified to cut the dataset. 
+A third method of creating an RDD in Spark is to apply a transformation on an existing RDD to create a new RDD. 
+
+#parallel programming 
+Next, let's define parallel programming. Parallel programming, like distributed
+programming, is the simultaneous use of multiple compute resources to
+solve a computational task. Parallel programming parses tasks
+into discrete parts that are solved concurrently using multiple processors. The processors access a shared pool of memory, which has in place control
+and coordination mechanisms. 
+
+Here is an example of how RDDs enabled parallel programming. This example is similar to
+creating an RDD in Spark. You create an RDD by
+parallelizing an array of objects or by splitting a dataset into partitions. Nodes receive the distributed partitions. Spark runs one task for each
+partition of the cluster. Based on how RDDs are created, RDDs can inherently be operated on in parallel. So how do RDDs provide resilience in Spark. RDD's provide resilience in Spark
+through immutability and caching. First RDDs are always recoverable as the data is immutable. Another essential
+Spark capability is the persisting or caching of a data set in
+memory across operations. The cache is fault tolerant
+and always recoverable. as RDDs are immutable and the
+Hadoop data sources are also fault tolerant. When you persist in RDD, each node stores the partitions
+that the node computed in memory and reuses the same
+partition in other actions on that data set or the subsequent
+datasets derived from the first RDD. Persistence allows future
+actions to be much faster, often by more than 10 times. Persisting or caching is used as a key tool for iterative algorithms
+and fast interactive use. In this video, you learned that you can create RDD using an external or local file from
+a Hadoop supported file, a collection or another RDD. RDDs are immutable and always recoverable. Parallel programming is the simultaneous
+use of multiple compute resources to solve a computational task. RDDs can persist or cache datasets in memory across operations, which spades iterative operations.

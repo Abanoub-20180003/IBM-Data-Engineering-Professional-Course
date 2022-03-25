@@ -1,0 +1,57 @@
+Welcome to “How to Run an Apache Spark Application”! After watching this video, you will be able
+to: Describe how to submit an Apache Spark application, explain the characteristics of Spark’s unified
+interface, ‘spark-submit,’ describe and apply the options you can use
+to submit applications, describe ways of managing external application
+dependencies, describe the benefits of using Spark Shell
+to run applications. Spark comes with a unified interface for submitting
+applications – it is the ‘spark-submit’ script found in the ‘bin/’ directory. ‘spark-submit’ can be used for all supported
+cluster types and accepts many configuration options for the application or cluster. “Unified interface” means you can switch
+from running Spark in local mode to cluster by changing a single argument. ‘spark-submit’ works the same way, no
+matter the application language. For example, a cluster can run Python and
+Java applications simultaneously by passing in the required files. The ‘spark-submit’ script first parses
+any command line arguments or options. Then it reads any additional configuration
+specified in the ‘spark-defaults’ folder. Next, the ‘--master’ argument tells the
+application how to connect to the cluster or run locally. Any application files (including JARs or Python
+files) must be specified so they can start the driver program and distribute files to
+run in the cluster. Some ‘spark-submit’ options are mandatory,
+such as specifying the master option to tell Spark which cluster manager to connect to. If the application is written in Java or Scala
+and packaged in a JAR, you must specify the full class name of the program entry point. Other options include driver deploy mode (run
+as a client or in the cluster) and executor resource settings (such as reserving memory
+or cores). Driver deploy mode defaults to client mode. Some options relate to specific cluster managers. Additional Spark configuration can be specified
+on the command line using the ‘--conf’ argument followed by key=value. For Java or Scala and Python, final arguments
+will be the path to the application JAR or Python script. Next are optional application-specific arguments. These will automatically be passed in. You can add Python files with ‘.py,’ ‘.egg’,
+or ‘.zip’ using the ‘--py-files’ argument. These files will be distributed to the cluster
+and available in the Python environment. Let’s look at two ‘spark-submit’ examples. The first launches SparkPi, written in Scala
+and packaged in a JAR. YARN is the master. The application uses an additional argument
+(how many samples to take in the cluster to compute Pi). The second example launches a SparkPi Python
+version. The master is a Spark Standalone cluster and
+we simply pass the path to the Python script. To manage Spark dependencies, the application
+project or library must be accessible for the driver and cluster executor processes. For a Java or Scala-based application, it’s
+best to create an uber-JAR. This is a single JAR file with all dependencies
+(including transitive ones) so the application is portable throughout the cluster. For Python applications, ensure that: (1)
+the cluster nodes access required dependencies with the same version AND (2) the same Python
+version is used. Solutions for Python dependencies may involve
+creating virtual environments so that applications can run in separate, isolated environments. Python dependencies can be included in the
+spark-submit script using the ‘--py-files’ argument: this will accept
+‘.py’, ‘.zip’ or ‘.egg’ files. Spark Shell is available for Scala and Python,
+giving you access to Spark APIs for working with data as Spark jobs. Spark Shell can be used in local or cluster
+mode, with all options available. When Spark Shell starts, the environment automatically
+initializes the SparkContext and SparkSession variables. This means you can start working with data
+immediately. Expressions are entered in the shell and evaluated
+in the driver. Entering an action on a shell DataFrame generates
+Spark jobs that are sent to the cluster to be scheduled as tasks. This example shows the Spark Scala shell starting
+up in local mode. The print-out includes: Spark’s load log in the log4j-defaults.properties
+file; Spark’s Web UI address, displaying running
+jobs in the shell; Variable names for the initialized SparkContext
+and SparkSession, and Version information for important libraries
+like JDK and Scala. This example shows running code in the Scala
+shell. In the first line, a DataFrame is created
+as a distributed range of integers from 0 to 9. The second line transforms the DataFrame,
+adding a column calculating the modulo of 2. Next is an action that prints out the first
+four records of the resulting DataFrame. In this video, you learned that: ‘spark-submit’ is a unified interface
+to submit the Spark Application, no matter the cluster manager or application language. Mandatory options include telling Spark which
+cluster manager to connect to; other options set driver deploy mode or executor resourcing. To manage dependencies, application projects
+or libraries must be accessible for driver and executor processes, for example by creating
+a Java or Scala uber-JAR. Spark Shell simplifies working with data by
+automatically initializing the SparkContext and SparkSession variables and providing Spark
+API access.

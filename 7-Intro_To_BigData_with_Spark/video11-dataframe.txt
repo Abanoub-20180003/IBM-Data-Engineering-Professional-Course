@@ -1,0 +1,29 @@
+Welcome to “SparkSQL and DataFrames!” After watching this video, you will be able to: Define SparkSQL, define the parts of a Spark SQL query, and explain the benefits of using SparkSQL. Describe what DataFrames are, define
+the parts of a DataFrame query, and explain the benefits of using a DataFrame. Explain how DataFrames work with Spark SQL. Spark SQL is a Spark module
+for structured data processing. You can interact with Spark SQL using
+SQL queries and the DataFrame API. Spark SQL supports Java,
+Scala, Python, and R APIs. Spark SQL uses the same execution
+engine to compute the result independently of which API or language
+you are using for the computation. Developers can use the API that provides the most
+natural way to express a given transformation. Here is an example of a
+Spark SQL query using Python. The query select star from people statement
+is the SQL query run using Spark SQL. The entity “people” was registered
+as a table view before this command. Unlike the basic Spark RDD API, Spark SQL includes a cost-based optimizer,
+columnar storage, and code generation to perform optimizations that provide Spark with additional
+information about the structure of both the data and the computation in process.So, what is a DataFrame? A DataFrame is a collection of
+data organized into named columns. DataFrames are conceptually equivalent
+to a table in a relational database and similar to a data frame in
+R/Python, but with richer optimizations. DataFrames are built on top of the Spark SQL RDD API. DataFrames use RDDs to perform relational queries. Here is a simple code snippet in Python to read from a JSON file and create a simple DataFrame. The last step of registering the DataFrame runs SQL queries on this data using Spark SQL. Here you see the input data file in JSON format and the resulting DataFrame. DataFrames offer many benefits: DataFrames are highly scalable—from a few kilobytes on a single laptop to petabytes on a large cluster of machines. DataFrames support a wide array of
+data formats and storage systems. DataFrames provide optimization and code
+generation through a Catalyst optimizer. Last, DataFrames are developer-friendly, offering
+integration with most big data tooling via Spark and APIs for Python, Java, Scala, and R. These code snippets show how to run the same SQL query and the result
+of those queries using Spark SQL. All three queries show here achieve the same result of showing the names
+column from our DataFrame. The first query is a more traditional SQL
+query, while the other two code examples use the DataFrame Python API
+to perform the same task. Similarly, here are two different ways to query the entries in the DataFrame to locate people
+who are above the age of 21. The first code example is a SQL query, while
+the second code example uses the DataFrame API. In this video, you learned that: SparkSQL is a Spark module for
+structured data processing. Spark SQL provides a programming abstraction called DataFrames and can also act
+as a distributed SQL query engine. DataFrames are conceptually equivalent to a table in a relational database or a data frame
+in R/Python, but
+with richer optimizations.

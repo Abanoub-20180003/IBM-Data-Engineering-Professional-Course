@@ -1,0 +1,55 @@
+Welcome to Apache Spark Architecture! After watching this video, you will be able
+to Describe the architecture of Apache Spark, identify processes in a Spark Application, explain how Spark Jobs and Tasks are related, define Stages and describe when a Data Shuffle
+occurs, describe the cluster deploy modes the driver
+program can be run in. A Spark application has two main processes. The driver program runs as one process per
+application. The driver process can be run on a cluster
+node or another machine as a client to the cluster.
+The driver runs the application’s user code, creates work and sends it to the cluster. An executor is a process running multiple
+threads to perform work concurrently for the cluster. Executors work independently.
+There can be many throughout a cluster and one or more per node, depending on configuration. The Spark Context starts when the application
+launches and must be created in the driver before DataFrames or RDDs.
+Any DataFrames or RDDs created under the context are tied to it and the context must remain
+active for the life of them. The driver program creates work from the user
+code called “Jobs” (or computations that can be performed in parallel). The Spark Context
+in the driver divides the jobs into tasks to be executed on the cluster. Tasks from a given job operate on different
+data subsets, called Partitions. This means tasks can run in parallel in the
+Executors. A Spark Worker is a cluster node that performs
+work. A Spark Executor utilizes a set portion of
+local resources as memory and compute cores, running one task per available core.
+Each executor manages its data caching as dictated by the driver. In general, increasing
+executors and available cores increases the cluster’s parallelism. Tasks run in separate threads until all cores
+are used. When a task finishes, the executor puts the
+results in a new RDD partition or transfers them back to the driver. Ideally, limit utilized cores to total cores
+available per node. For instance, an 8-core node could have 1 executor process using 8
+cores. A “stage” in a Spark job represents a
+set of tasks an executor can complete on the current data partition. When a task requires other data partitions,
+Spark must perform a “shuffle." A shuffle marks the boundary between stages.
+Subsequent tasks in later stages must wait for that stage to be completed before beginning
+execution, creating a dependency from one stage to the next. Shuffles are costly as they require data serialization,
+disk and network I/O. This is because they enable tasks to “pass
+over” other dataset partitions outside the current partition.
+An example would be a “groupby” with a given key that requires scanning each partition
+to find matching records. When Spark performs a shuffle, it redistributes
+the dataset across the cluster. This example shows two stages separated by
+a shuffle. In Stage 1, a transformation (such as a map)
+is applied on dataset “a” which has 2 partitions (“1a” and “2b”). This creates
+data set “b”. The next operation requires a shuffle (such
+as a “groupby”). Key values could exist in any other partition, so to group keys of
+equal value together, tasks must scan each partition to pick out the matching records. Transformation results are placed in Stage
+2. Here results have the same number of partitions, but this depends on the operation. Final results are sent to the driver program
+as an action, such as collect. NOTE: It is not advised to perform a collection
+to the driver on a large data set as it could easily use up the driver process memory. If
+the data set is large, apply a reduction before collection. Let’s recap what we’ve learned about Spark
+Architecture. It consists of the driver and the executor processes.
+The cluster comprises the Cluster Manager and worker nodes. The Spark Context schedules tasks to the cluster
+and the Cluster Manager manages the cluster’s resources. The driver program can be run in either client
+or cluster mode. In client mode the application submitter (such
+as a user machine terminal) launches the driver outside the cluster. In cluster mode, the driver program is sent
+to and run on an available Worker node inside the cluster. The driver must be able to communicate with
+the cluster while it is running, whether it is in client or cluster mode. In this video, you learned that: Spark Architecture has driver and executor
+processes, coordinated by the Spark Context in the driver. The driver creates jobs and splits them into
+tasks which can be run in parallel in the executors. Stages are a set of tasks that are separated
+by a data shuffle. Shuffles are costly, as they require data
+serialization, disk and network I/O. The Driver can be run in either or both Client
+or Cluster mode. The Client Mode connects the driver outside the cluster while Cluster
+Mode runs the driver in the cluster.
